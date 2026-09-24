@@ -1,5 +1,5 @@
 name: Create and publish docker image
-run-name: ${{ github.actor }} is testing out github actions yippieeee
+run-name: Creating and publishing the docker image
 on: [push]
 
 env:
@@ -30,7 +30,7 @@ jobs:
         id: push
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
-          context: app
+          context: "${{ defaultContext }}:app"
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
